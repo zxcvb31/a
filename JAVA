@@ -1,0 +1,53 @@
+2.5
+var num=3;
+alert(num);
+2.6
+var a=10; var b=12; console.log(a+b,a-b,a*b,a/b);
+2.7
+var c=15; var d=2; var result=c+d; console.log(result);
+2.8
+var a=10; var b=2; var c=5; console.log(a+b+c);
+2.9
+var a=17;var b=10;var c=a-b;var d=7;result=c+d;console.log(result);
+2.10
+var str= 'Привет, Мир!'; console.log(str);
+2.11
+var str1='Привет '; var str2='мир!'; var str3=str1+str2; console.log(str3);
+2.12
+var name='Danil';console.log('Привет,'+name);
+2.13
+var age=17;console.log('Мне '+age+' лет');
+2.14
+var name = prompt('как тебя зовут?'); 
+
+console.log('Ваше имя ' + name);
+2.15
+var num = prompt('Введите число'); 
+
+console.log(num * num);
+2.16
+var str = 'abcde';
+
+console.log(str[0]);
+console.log(str[2]);
+console.log(str[4]);
+2.17
+var num='12345';var result=num[0]*num[1]*num[2]*num[3]*num[4];console.log(result);
+2.18
+var secInHours=60*60;var secInDay=secInHours*24; var secInMonth=secInDay*31;console.log(secInHours,secInDay,secInMonth);
+2.19
+var hour=17;var min=23;var sec=59;console.log(hour+":"+min+":"+sec);
+2.20
+var a=5;console.log(a*a);
+2.21
+var num = 47;
+num += 7;
+num -=18;
+num *=10;
+num /= 15;
+console.log(num);
+var num = 10;
+num = num++;
+num = num++;
+num = num--;
+alert(num);
