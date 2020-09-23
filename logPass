@@ -1,0 +1,118 @@
+package javafxapplication4;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+//import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.geometry.Orientation;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+
+/**
+ *
+ * @author Danil
+ */
+public class JavaFXApplication4 extends Application {
+    private static List<Character> chars = new ArrayList<>();
+    String a="";
+    @Override
+    public void start(Stage primaryStage) {
+        
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(new File("Doc1.txt")));
+            
+            a=reader.readLine();
+/*          int c;
+            while ((c = reader.read()) != -1) {
+                chars.add((char) c);
+                
+                
+            }
+*/
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        System.out.println(a);
+        //System.out.println(chars.toString());
+        
+        List<String> strings = Arrays.asList(a.split(","));
+        System.out.println(strings.toString());
+        String login= strings.get(0);
+        String password=strings.get(1);
+        System.out.println("login = "+login);
+        System.out.println("password = "+password);
+        
+        TextField log = new TextField();
+        log.setPrefColumnCount(11);
+        TextField pass = new TextField();
+        pass.setPrefColumnCount(11);
+        Button btn = new Button("Click");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event) {
+
+                
+                String CheckLog=log.getText();
+                String CheckPass=pass.getText();
+                System.out.println(CheckLog);
+                System.out.println(CheckPass);
+                if((login.equals(CheckLog))&(password.equals(CheckPass)))
+                {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Правильно!");
+                alert.showAndWait();
+                }
+                else {
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setTitle("Information");
+                alert2.setHeaderText(null);
+                alert2.setContentText("Не правильно!");
+                alert2.showAndWait();
+                }
+                
+            }
+        });
+        
+        FlowPane root = new FlowPane(Orientation.VERTICAL, 10, 10, log, pass, btn);
+        
+        Scene scene = new Scene(root, 300, 250);
+        
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
